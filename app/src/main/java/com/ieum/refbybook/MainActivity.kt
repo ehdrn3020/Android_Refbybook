@@ -55,5 +55,65 @@ class MainActivity : AppCompatActivity() {
             Log.d("continue", "This index is ${except}") // 1,2,3,8,9,10
         }
 
-    }
+        /** Function **/
+        fun newFunction(name:String, age:Int = 29, weight:Double =65.5) {
+            Log.d("fun","name value is ${name}")
+            Log.d("fun","age value is ${age}")
+            Log.d("fun","weight value is ${weight}")
+        }
+        newFunction("Hellow", weight = 75.5)
+
+
+        /** Class **/
+        class Pig {
+            var name : String = "Pinky"  //property
+            fun printName() {           //method
+                Log.d("class","Pig name is ${name}")       //멤버변수
+            }
+        }
+        var pig = Pig()
+        pig.name = "Pooh"
+        pig.printName()
+
+        //data class
+        data class UserData(val name:String, var age:Int)
+        var userData = UserData("jsony",45)
+        Log.d("dataclass","userData is ${userData.toString()}")
+        var newData = userData.copy()
+        Log.d("dataclass","newData is ${newData}")
+
+        //상속
+        open class Parent {
+            var hello: String = "Hellllow"
+            fun sayHello() {
+                Log.d("ih","${hello}")
+            }
+        }
+        class Child:Parent() {
+            fun myHello(){
+                hello = "Hello!"
+                sayHello()
+            }
+        }
+        var child = Child()
+        child.sayHello()
+
+        // override
+        open class BaseClass {
+            open fun opened() {}
+        }
+        class ChildClass: BaseClass() {
+            override fun opened() {}
+        }
+
+        //extention 거의 메서드 확장시 사용
+//        fun testStringExtension() {
+//            var original = "hellow"
+//            var added = "Guys~"
+//            Log.d("ex", "ex ${original.plus(added)}")
+//        }
+//        fun String.plus(word:String): String {
+//            return this+word
+//        }
+//    }
 }
